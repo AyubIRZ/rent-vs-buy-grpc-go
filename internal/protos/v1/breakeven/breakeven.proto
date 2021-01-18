@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package v1.breakeven;
+
+option go_package = "internal/protos/v1/breakeven";
+
+message BreakevenRequest {
+  int64 houseValue = 1;
+  float downPayment = 2;
+  float propertyTaxRate = 3;
+  float propertyTransferTaxRate = 4;
+  int32 livingYears = 5;
+  int32 mortgageInterestRate = 6;
+  int32 mortgageTerm = 7;
+  int32 monthlyCommonCost = 8;
+}
+
+message BreakevenResponse {
+  string response = 1;
+}
+
+service BreakevenService {
+  rpc CalcBreakeven(BreakevenRequest) returns (BreakevenResponse) {}
+}

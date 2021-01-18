@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      target: exec
+    image: app:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${EXTERNAL_PORT}:${APP_PORT}" # Expose gRPC server port.
